@@ -4,24 +4,23 @@ import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-
 import net.vibey.wariumdj.djConfigManager;
 
 public class wariumdjGui extends Screen {
 
     public wariumdjGui() {
-        super(Component.literal("volume config"));
+        super(Component.literal("Sound Categories"));
     }
 
     @Override
     protected void init() {
         int y = 40;
 
-        // Add a slider for each known sound ID
-        for (String soundId : djConfigManager.getAllSoundIds()) {
-            float vol = djConfigManager.getVolume(soundId);
-            this.addRenderableWidget(new VolumeSlider(this.width / 2 - 100, y, 200, 20, soundId, vol));
-            y += 25;
+        // Add a slider for each category
+        for (String category : djConfigManager.getCategories()) {
+            float vol = djConfigManager.getCategoryVolume(category);
+            this.addRenderableWidget(new VolumeSlider(this.width / 2 - 100, y, 200, 20, category, vol));
+            y += 30;
         }
 
         // Done button
@@ -30,31 +29,28 @@ public class wariumdjGui extends Screen {
         }).bounds(this.width / 2 - 100, this.height - 40, 200, 20).build());
     }
 
-    /**
-     * Inner slider class so we don't need a separate file.
-     */
     private static class VolumeSlider extends AbstractSliderButton {
-        private final String soundId;
+        private final String category;
 
-        public VolumeSlider(int x, int y, int width, int height, String soundId, double currentVolume) {
+        public VolumeSlider(int x, int y, int width, int height, String category, double currentVolume) {
             super(x, y, width, height,
-                    Component.literal(formatLabel(soundId, currentVolume)),
+                    Component.literal(formatLabel(category, currentVolume)),
                     currentVolume);
-            this.soundId = soundId;
+            this.category = category;
         }
 
-        private static String formatLabel(String soundId, double value) {
-            return soundId + ": " + (int)(value * 100) + "%";
+        private static String formatLabel(String category, double value) {
+            return category + ": " + (int)(value * 100) + "%";
         }
 
         @Override
         protected void updateMessage() {
-            this.setMessage(Component.literal(formatLabel(soundId, this.value)));
+            this.setMessage(Component.literal(formatLabel(category, this.value)));
         }
 
         @Override
         protected void applyValue() {
-            djConfigManager.setVolume(soundId, (float) this.value);
+            djConfigManager.setCategoryVolume(category, (float) this.value);
         }
     }
 }

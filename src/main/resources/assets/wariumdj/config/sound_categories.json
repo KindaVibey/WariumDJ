@@ -1,0 +1,49 @@
+{
+  "guns": [
+    "crusty_chunks:bolt",
+    "crusty_chunks:bolt2",
+    "crusty_chunks:bolt3",
+    "crusty_chunks:boltreload",
+    "crusty_chunks:distantgunfire",
+    "crusty_chunks:flaregun",
+    "crusty_chunks:largeshot",
+    "crusty_chunks:leveraction",
+    "crusty_chunks:magazine",
+    "crusty_chunks:midrangeshot",
+    "crusty_chunks:pistolaction",
+    "crusty_chunks:revolver",
+    "crusty_chunks:revolverreload",
+    "crusty_chunks:riflemagazine",
+    "crusty_chunks:shotguncasing",
+    "crusty_chunks:shotguncycle",
+    "crusty_chunks:shotgunreload",
+    "crusty_chunks:smallcasing",
+    "crusty_chunks:smallshot"
+  ],
+  "block guns": [
+    "crusty_chunks:battlecannon",
+    "crusty_chunks:brtttfar",
+    "crusty_chunks:cannonclose",
+    "crusty_chunks:cannonfar",
+    "crusty_chunks:distantshot",
+    "crusty_chunks:distantshotmedium",
+    "crusty_chunks:mediumcasing",
+    "crusty_chunks:mediumshot",
+    "crusty_chunks:peelerpod",
+    "crusty_chunks:peelerpodfar",
+    "crusty_chunks:rocket_launch",
+    "crusty_chunks:rocketfar",
+    "crusty_chunks:rocketflight",
+    "crusty_chunks:smallcasing",
+    "crusty_chunks:smallshot"
+  ],
+  "wariumVS": [
+
+  ],
+  "explosions": [
+
+  ],
+  "misc": [
+
+  ]
+}
