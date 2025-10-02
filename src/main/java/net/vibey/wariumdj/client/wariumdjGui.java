@@ -6,27 +6,42 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.vibey.wariumdj.djConfigManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class wariumdjGui extends Screen {
 
     public wariumdjGui() {
-        super(Component.literal("Sound Categories"));
+        super(Component.literal("Sound Volume Categories"));
     }
 
     @Override
     protected void init() {
-        int y = 40;
+        super.init();
 
-        // Add a slider for each category
-        for (String category : djConfigManager.getCategories()) {
+        List<String> categories = new ArrayList<>(djConfigManager.getAllCategoryNames());
+        categories.sort(String::compareToIgnoreCase);
+
+        int y = 40;
+        int spacing = 30;
+
+        for (String category : categories) {
             float vol = djConfigManager.getCategoryVolume(category);
-            this.addRenderableWidget(new VolumeSlider(this.width / 2 - 100, y, 200, 20, category, vol));
-            y += 30;
+            this.addRenderableWidget(new VolumeSlider(
+                    this.width / 2 - 100,
+                    y,
+                    200,
+                    20,
+                    category,
+                    vol
+            ));
+            y += spacing;
         }
 
-        // Done button
-        this.addRenderableWidget(Button.builder(Component.literal("Done"), b -> {
-            this.minecraft.setScreen(null);
-        }).bounds(this.width / 2 - 100, this.height - 40, 200, 20).build());
+        this.addRenderableWidget(Button.builder(
+                Component.literal("Done"),
+                b -> this.minecraft.setScreen(null)
+        ).bounds(this.width / 2 - 100, this.height - 40, 200, 20).build());
     }
 
     private static class VolumeSlider extends AbstractSliderButton {

@@ -1,5 +1,5 @@
 {
-  "guns": [
+  "weapons": [
     "crusty_chunks:bolt",
     "crusty_chunks:bolt2",
     "crusty_chunks:bolt3",
@@ -17,9 +17,7 @@
     "crusty_chunks:shotguncasing",
     "crusty_chunks:shotguncycle",
     "crusty_chunks:shotgunreload",
-    "crusty_chunks:silencedshot"
-  ],
-  "block guns": [
+    "crusty_chunks:silencedshot",
     "crusty_chunks:battlecannon",
     "crusty_chunks:brtttfar",
     "crusty_chunks:cannonclose",
@@ -34,6 +32,8 @@
     "crusty_chunks:rocketfar",
     "crusty_chunks:rocketflight",
     "crusty_chunks:smallcasing",
+    "crusty_chunks:dryfire",
+    "crusty_chunks:rac",
     "crusty_chunks:smallshot"
   ],
   "wariumVS": [
@@ -59,6 +59,21 @@
     "valkyrien_warium:tracks"
   ],
   "explosions": [
+    "entity.generic.explode",
+    "entity.generic.explosion",
+    "entity.dragon_fireball.explode",
+    "entity.large_fireball.explode",
+    "entity.small_fireball.hit",
+    "entity.firework_rocket.blast",
+    "entity.firework_rocket.blast_far",
+    "entity.firework_rocket.large_blast",
+    "entity.firework_rocket.large_blast_far",
+    "entity.end_crystal.explode",
+    "block.respawn_anchor.explode",
+    "block.end_crystal.explode",
+    "entity.creeper.primed",
+    "entity.creeper.death",
+    "entity.tnt.primed",
     "crusty_chunks:smallexplosion",
     "crusty_chunks:spacenuke",
     "crusty_chunks:small_expllosion_distant",
@@ -75,7 +90,6 @@
     "crusty_chunks:commanderalert",
     "crusty_chunks:commanderwaffing",
     "crusty_chunks:drone",
-    "crusty_chunks:dryfire",
     "crusty_chunks:engine",
     "crusty_chunks:golemidle",
     "crusty_chunks:golemmad",
@@ -88,7 +102,6 @@
     "crusty_chunks:mechstep",
     "crusty_chunks:megamechstep",
     "crusty_chunks:motor",
-    "crusty_chunks:rac",
     "crusty_chunks:rumble",
     "crusty_chunks:siren",
     "crusty_chunks:sirenfar",
