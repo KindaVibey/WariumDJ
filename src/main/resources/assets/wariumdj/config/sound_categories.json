@@ -17,6 +17,7 @@
     "crusty_chunks:shotguncasing",
     "crusty_chunks:shotguncycle",
     "crusty_chunks:shotgunreload",
+    "crusty_chunks:silencedshot",
     "crusty_chunks:smallcasing",
     "crusty_chunks:smallshot"
   ],
@@ -38,12 +39,65 @@
     "crusty_chunks:smallshot"
   ],
   "wariumVS": [
-
+    "valkyrien_warium:beep",
+    "valkyrien_warium:gyromotor",
+    "valkyrien_warium:heavyjetblast",
+    "valkyrien_warium:helifar",
+    "valkyrien_warium:helinear",
+    "valkyrien_warium:helirotor",
+    "valkyrien_warium:jetblast",
+    "valkyrien_warium:lockwarning",
+    "valkyrien_warium:propclose",
+    "valkyrien_warium:propfar",
+    "valkyrien_warium:radarlockwarn",
+    "valkyrien_warium:rcspuff",
+    "valkyrien_warium:rocket",
+    "valkyrien_warium:rwr",
+    "valkyrien_warium:solidrocket",
+    "valkyrien_warium:solidrocketfar",
+    "valkyrien_warium:solidrocketlaunch",
+    "valkyrien_warium:sonicboom",
+    "valkyrien_warium:tirestress",
+    "valkyrien_warium:tracks"
   ],
   "explosions": [
-
+    "crusty_chunks:smallexplosion",
+    "crusty_chunks:spacenuke",
+    "crusty_chunks:small_expllosion_distant",
+    "crusty_chunks:medium_small_explosion_distant",
+    "crusty_chunks:huge_explosion_distant",
+    "crusty_chunks:fissionblast",
+    "crusty_chunks:farblast",
+    "crusty_chunks:explosion_distant",
+    "crusty_chunks:explosion"
   ],
   "misc": [
-
+    "crusty_chunks:beep",
+    "crusty_chunks:bounce",
+    "crusty_chunks:commanderalert",
+    "crusty_chunks:commanderwaffing",
+    "crusty_chunks:drone",
+    "crusty_chunks:dryfire",
+    "crusty_chunks:engine",
+    "crusty_chunks:golemidle",
+    "crusty_chunks:golemmad",
+    "crusty_chunks:heavylaunch",
+    "crusty_chunks:humm",
+    "crusty_chunks:hunterfar",
+    "crusty_chunks:hunternear",
+    "crusty_chunks:jetfar",
+    "crusty_chunks:jetidle",
+    "crusty_chunks:mechstep",
+    "crusty_chunks:megamechstep",
+    "crusty_chunks:motor",
+    "crusty_chunks:rac",
+    "crusty_chunks:rumble",
+    "crusty_chunks:siren",
+    "crusty_chunks:sirenfar",
+    "crusty_chunks:sonicboom",
+    "crusty_chunks:sparks",
+    "crusty_chunks:strikerstep",
+    "crusty_chunks:turbine",
+    "crusty_chunks:wizz"
   ]
 }
