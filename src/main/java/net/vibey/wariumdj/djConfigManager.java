@@ -21,11 +21,13 @@ public class djConfigManager {
 
     public static void load() {
         try {
-            // First run: copy default JSON if config does not exist
+            // 1. Ensure config folder exists
+            Files.createDirectories(CONFIG_FILE.getParentFile().toPath());
+
+            // 2. Copy default JSON if missing
             if (!CONFIG_FILE.exists()) {
-                Files.createDirectories(CONFIG_FILE.getParentFile().toPath());
                 try (InputStream stream = djConfigManager.class.getClassLoader()
-                        .getResourceAsStream("assets/soundtweaker/config/default_volumes.json")) {
+                        .getResourceAsStream("assets/wariumdj/config/default_volumes.json")) {
                     if (stream != null) {
                         Files.copy(stream, CONFIG_FILE.toPath());
                         System.out.println("Default sound config copied!");
@@ -35,7 +37,7 @@ public class djConfigManager {
                 }
             }
 
-            // Now load JSON
+            // 3. Load JSON into volumeMap
             if (CONFIG_FILE.exists()) {
                 try (FileReader reader = new FileReader(CONFIG_FILE)) {
                     Map<?, ?> map = GSON.fromJson(reader, Map.class);
@@ -48,7 +50,6 @@ public class djConfigManager {
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
