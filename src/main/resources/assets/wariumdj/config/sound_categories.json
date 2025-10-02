@@ -17,9 +17,7 @@
     "crusty_chunks:shotguncasing",
     "crusty_chunks:shotguncycle",
     "crusty_chunks:shotgunreload",
-    "crusty_chunks:silencedshot",
-    "crusty_chunks:smallcasing",
-    "crusty_chunks:smallshot"
+    "crusty_chunks:silencedshot"
   ],
   "block guns": [
     "crusty_chunks:battlecannon",
