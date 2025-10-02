@@ -15,7 +15,7 @@ import java.util.Collections;
 
 public class djConfigManager {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final File FILE = new File("config/djConfigManager.json");
+    private static final File FILE = new File("config/djConfig.json");
 
     private static final Map<String, Float> volumeMap = new HashMap<>();
 
@@ -37,12 +37,13 @@ public class djConfigManager {
     }
 
     protected static void load() {
-        if (!FILE.exists()) {
+        File configFile = new File("config/djConfig");
+        if (!configFile.exists()) {
             // First run: copy default JSON from resources
             try (InputStream stream = djConfigManager.class.getClassLoader().getResourceAsStream("assets/wariumdj/config/default_volumes.json")) {
                 if (stream != null) {
-                    Files.createDirectories(FILE.getParentFile().toPath());
-                    Files.copy(stream, FILE.toPath());
+                    Files.createDirectories(configFile.getParentFile().toPath());
+                    Files.copy(stream, configFile.toPath());
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -50,8 +51,8 @@ public class djConfigManager {
         }
 
         // Now load the JSON as usual
-        if (FILE.exists()) {
-            try (FileReader reader = new FileReader(FILE)) {
+        if (configFile.exists()) {
+            try (FileReader reader = new FileReader(configFile)) {
                 Map<?, ?> map = GSON.fromJson(reader, Map.class);
                 if (map != null) {
                     for (Map.Entry<?, ?> entry : map.entrySet()) {
