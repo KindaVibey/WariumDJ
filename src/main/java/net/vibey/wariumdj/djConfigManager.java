@@ -30,9 +30,9 @@ public class djConfigManager {
                         .getResourceAsStream("assets/wariumdj/config/default_volumes.json")) {
                     if (stream != null) {
                         Files.copy(stream, CONFIG_FILE.toPath());
-                        System.out.println("Default sound config copied!");
-                    } else {
-                        System.err.println("Default sound config NOT found in JAR!");
+                        //System.out.println("Default sound config copied!");
+                    //} else {
+                        //System.err.println("Default sound config NOT found in JAR!");
                     }
                 }
             }
