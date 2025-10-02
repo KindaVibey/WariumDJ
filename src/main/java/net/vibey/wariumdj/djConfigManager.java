@@ -20,8 +20,8 @@ public class djConfigManager {
     // Maps category name -> volume multiplier
     private static final Map<String, Float> categoryVolumes = new HashMap<>();
 
-    // Maps sound ID -> category name (loaded from resources, always overwrites)
-    private static final Map<String, String> soundToCategory = new HashMap<>();
+    // Maps sound ID -> list of categories (sounds can be in multiple categories)
+    private static final Map<String, List<String>> soundToCategories = new HashMap<>();
 
     public static void load() {
         try {
@@ -70,13 +70,14 @@ public class djConfigManager {
                 Map<String, List<String>> categories = GSON.fromJson(reader,
                         new TypeToken<Map<String, List<String>>>(){}.getType());
 
-                // Clear old mappings and load new ones from resources
-                soundToCategory.clear();
+                // Clear old mappings
+                soundToCategories.clear();
 
+                // Build map where each sound tracks ALL its categories
                 for (Map.Entry<String, List<String>> entry : categories.entrySet()) {
                     String categoryName = entry.getKey();
                     for (String soundId : entry.getValue()) {
-                        soundToCategory.put(soundId, categoryName);
+                        soundToCategories.computeIfAbsent(soundId, k -> new ArrayList<>()).add(categoryName);
                     }
                 }
                 System.out.println("Loaded " + categories.size() + " categories from resources");
@@ -88,11 +89,21 @@ public class djConfigManager {
         }
     }
 
-    // Get volume for a specific sound based on its category
+    // Get volume for a specific sound - uses MAXIMUM volume across all its categories
     public static float getVolume(String soundId) {
-        String category = soundToCategory.get(soundId);
-        if (category != null) {
-            return categoryVolumes.getOrDefault(category, 1.0f);
+        List<String> categories = soundToCategories.get(soundId);
+        if (categories != null && !categories.isEmpty()) {
+            float maxVolume = 0.0f;
+            for (String category : categories) {
+                float catVolume = categoryVolumes.getOrDefault(category, 1.0f);
+                maxVolume = Math.max(maxVolume, catVolume);
+            }
+            System.out.println("[WariumDJ] " + soundId + " -> " + categories + " -> " + (maxVolume * 100) + "%");
+            return maxVolume;
+        }
+        // Sound not in any category - print for debugging
+        if (soundId.contains("crusty_chunks") || soundId.contains("valkyrien_warium")) {
+            System.out.println("[WariumDJ] UNMAPPED: " + soundId);
         }
         return 1.0f; // Unmapped sounds play at full volume
     }
@@ -111,8 +122,8 @@ public class djConfigManager {
     // Get all category names for the GUI
     public static Set<String> getCategories() {
         Set<String> categories = new HashSet<>();
-        for (String category : soundToCategory.values()) {
-            categories.add(category);
+        for (List<String> catList : soundToCategories.values()) {
+            categories.addAll(catList);
         }
         return categories;
     }
