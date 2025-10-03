@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.vibey.wariumdj.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "wariumdj.refmap.json",
+  "client": [
+    "SoundEngineMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

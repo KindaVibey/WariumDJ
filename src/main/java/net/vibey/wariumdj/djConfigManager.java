@@ -31,6 +31,7 @@ public class djConfigManager {
                     categoryVolumes.put(category, 1.0f);
                 }
                 save();
+                System.out.println("[WariumDJ] Created config with " + categoryVolumes.size() + " categories");
             } else {
                 try (FileReader reader = new FileReader(CONFIG_FILE)) {
                     Map<?, ?> map = GSON.fromJson(reader, Map.class);
@@ -42,6 +43,7 @@ public class djConfigManager {
                         }
                     }
                 }
+                System.out.println("[WariumDJ] Loaded config with " + categoryVolumes.size() + " categories");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,6 +67,9 @@ public class djConfigManager {
                         soundToCategory.put(soundId, categoryName);
                     }
                 }
+                System.out.println("[WariumDJ] Loaded " + categories.size() + " categories with " + soundToCategory.size() + " sounds");
+            } else {
+                System.err.println("[WariumDJ] ERROR: sound_categories.json not found!");
             }
         } catch (Exception e) {
             e.printStackTrace();
